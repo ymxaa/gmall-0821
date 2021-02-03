@@ -1,13 +1,12 @@
 **/HELP.md
-**/.gitignore
 **/mvnw
 **/*.cmd
 **/*.md
 **/*.jar
 **/*.war
-**/*.pom
 **/*.iml
 **/LICENSE
+**/.mvn
 .idea/
 target/
 pom.xml.tag
