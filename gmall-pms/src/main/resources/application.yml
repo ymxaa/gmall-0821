@@ -42,3 +42,6 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: auto
+logging:
+  level:
+    com.atguigu.gmall: debug

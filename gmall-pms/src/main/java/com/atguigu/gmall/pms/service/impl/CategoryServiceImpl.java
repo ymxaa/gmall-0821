@@ -1,6 +1,9 @@
 package com.atguigu.gmall.pms.service.impl;
 
 import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -24,6 +27,21 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, CategoryEnt
         );
 
         return new PageResultVo(page);
+    }
+
+    @Override
+    public List<CategoryEntity> query123CategoriesByCid3(Long cid) {
+        CategoryEntity categoryEntity3 = this.getById(cid);
+        if(categoryEntity3 == null){
+            return null;
+        }
+        CategoryEntity categoryEntity2 = this.getById(categoryEntity3.getId());
+        if(categoryEntity2 == null){
+            return null;
+        }
+        CategoryEntity categoryEntity1 = this.getById(categoryEntity2.getId());
+
+        return Arrays.asList(categoryEntity1,categoryEntity2,categoryEntity3);
     }
 
 }

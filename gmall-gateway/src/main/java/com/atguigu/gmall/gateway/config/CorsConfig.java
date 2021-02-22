@@ -24,6 +24,9 @@ public class CorsConfig {
         config.addAllowedOrigin("http://manager.gmall.com");
         config.addAllowedOrigin("http://localhost:1000");
         config.addAllowedOrigin("http://api.gmall.com");
+        config.addAllowedOrigin("http://www.gmall.com");
+        config.addAllowedOrigin("http://gmall.com");
+        config.addAllowedOrigin("http://search.gmall.com");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
 

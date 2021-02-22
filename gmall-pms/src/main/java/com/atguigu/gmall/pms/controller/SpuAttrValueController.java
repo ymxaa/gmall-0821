@@ -35,10 +35,6 @@ public class SpuAttrValueController {
     @Autowired
     private SpuAttrValueService spuAttrValueService;
 
-    /**
-     * 列表
-     */
-
     @GetMapping("search/{cid}")
     public ResponseVo<List<SpuAttrValueEntity>>
     querySearchAttrValuesByCidAndSpuId(@PathVariable("cid") Long cid,@RequestParam Long spuId){

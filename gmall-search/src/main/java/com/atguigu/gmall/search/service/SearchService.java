@@ -48,6 +48,9 @@ public class SearchService {
 
     public SearchResponseVo search(SearchParamVo searchParamVo) {
 
+        if(StringUtils.isBlank(searchParamVo.getKeyword())){
+            return null;
+        }
         try {
             SearchRequest searchRequest = new SearchRequest(new String[]{"goods"}, builderDsl(searchParamVo));
             SearchResponse searchResponse = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);

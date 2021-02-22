@@ -1,0 +1,24 @@
+server:
+  port: 18087
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+  sleuth:
+    sampler:
+      probability: 1
+  zipkin:
+    sender:
+      type: web
+  thymeleaf:
+    cache: false
+  redis:
+    host: 192.168.227.128
+feign:
+  sentinel:
+    enabled: true
+

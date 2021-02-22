@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,32 @@ public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @GetMapping("all/{cid}")
+    public ResponseVo<List<CategoryEntity>> query123CategoriesByCid3(@PathVariable("cid") Long cid){
+        List<CategoryEntity> categoryEntities = categoryService.query123CategoriesByCid3(cid);
+        return ResponseVo.ok(categoryEntities);
+    }
+
+    @GetMapping("parent/withsubs/{pid}")
+    public ResponseVo<List<CategoryEntity>> queryLv2CategoriesByPid(@PathVariable("pid") Long pid){
+        QueryWrapper<CategoryEntity> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<CategoryEntity> querySubWrapper = new QueryWrapper<>();
+        queryWrapper.eq("parent_id",pid);
+        List<CategoryEntity> categoryEntities = categoryService.list(queryWrapper);
+
+
+        categoryEntities.forEach(categoryEntity -> {
+            querySubWrapper.clear();
+            querySubWrapper.eq("parent_id",categoryEntity.getId());
+            List<CategoryEntity> list = categoryService.list(querySubWrapper);
+            if(!CollectionUtils.isEmpty(list)) {
+                categoryEntity.setSubs(list);
+            }
+        });
+
+        return ResponseVo.ok(categoryEntities);
+    }
 
     /**
      * 列表
