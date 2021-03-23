@@ -1,0 +1,31 @@
+server:
+  port: 18089
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+  sleuth:
+    sampler:
+      probability: 1
+  zipkin:
+    sender:
+      type: web
+    base-url: http://localhost:9411
+    discovery-client-enabled: false
+
+feign:
+  sentinel:
+    enabled: true
+
+jwt:
+  pubKeyPath: E:\guli-gmall\rsa\rsa.pub
+  priKeyPath: E:\guli-gmall\rsa\rsa.pri
+  secret: 561548a5aASDA5d46467487932
+  expire: 180
+  cookieName: GMALL-TOKEN
+  unick: unick
+

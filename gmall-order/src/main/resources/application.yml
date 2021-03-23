@@ -1,0 +1,38 @@
+server:
+  port: 18092
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+
+  sleuth:
+    sampler:
+      probability: 1
+  zipkin:
+    sender:
+      type: web
+  redis:
+    port: 6379
+    host: 192.168.227.128
+  rabbitmq:
+    host: 192.168.227.128
+    port: 5672
+    virtual-host: /ymx
+    username: ymx
+    password: ymx
+    publisher-confirm-type: correlated
+    publisher-returns: true
+feign:
+  sentinel:
+    enabled: true
+logging:
+  level:
+    com.atguigu.gmall: debug
+jwt:
+  pubKeyPath: E:\guli-gmall\rsa\rsa.pub
+  cookieName: GMALL-TOKEN
+

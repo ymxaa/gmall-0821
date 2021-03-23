@@ -34,6 +34,13 @@ public class UserAddressController {
     @Autowired
     private UserAddressService userAddressService;
 
+
+    @GetMapping("user/{userId}")
+    public ResponseVo<List<UserAddressEntity>> queryUserAddressByUserId(@PathVariable("userId")Long userId){
+        List<UserAddressEntity> userAddressEntities = userAddressService.queryUserAddressByUserId(userId);
+        return ResponseVo.ok(userAddressEntities);
+    }
+
     /**
      * 列表
      */

@@ -1,6 +1,8 @@
 package com.atguigu.gmall.ums.service.impl;
 
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -24,6 +26,12 @@ public class UserAddressServiceImpl extends ServiceImpl<UserAddressMapper, UserA
         );
 
         return new PageResultVo(page);
+    }
+
+    @Override
+    public List<UserAddressEntity> queryUserAddressByUserId(Long userId) {
+        List<UserAddressEntity> userAddressEntities = this.list(new QueryWrapper<UserAddressEntity>().eq("user_id", userId));
+        return userAddressEntities;
     }
 
 }

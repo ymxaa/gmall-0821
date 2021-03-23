@@ -25,6 +25,18 @@ spring:
   redis:
     port: 6379
     host: 192.168.227.128
+  rabbitmq:
+    host: 192.168.227.128
+    virtual-host: /ymx
+    username: ymx
+    password: ymx
+    listener:
+      simple:
+        prefetch: 1
+        concurrency: 3
+        acknowledge-mode: manual
+    publisher-confirm-type: correlated
+    publisher-returns: true
 feign:
   sentinel:
     enabled: true

@@ -8,6 +8,8 @@ class GmallGatewayApplicationTests {
 
     @Test
     void contextLoads() {
+        String s1 = "hello";
+        String s2 = "he"+new String("llo");
     }
 
 }
